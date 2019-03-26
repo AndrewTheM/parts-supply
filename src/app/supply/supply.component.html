@@ -1,0 +1,21 @@
+<table border="1" cellspacing="0" cellpadding="5">
+  <thead>
+  <th>ID</th>
+  <th>Поставщик</th>
+  <th>Запчасть</th>
+  <th>Количество</th>
+  <th>Дата</th>
+  <th colspan="2">Редактирование</th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let supply of supplies" align="center">
+    <td>{{supply.id}}</td>
+    <td>{{supply.supplier.name}}</td>
+    <td>{{supply.part.name}}</td>
+    <td>{{supply.amount}}</td>
+    <td>{{supply.date}}</td>
+    <td><button (click)="delete(supply.id)">Удалить</button></td>
+    <td><button (click)="update(supply)">Изменить</button></td>
+  </tr>
+  </tbody>
+</table>

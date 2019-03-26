@@ -1,0 +1,23 @@
+<table border="1" cellspacing="0" cellpadding="5">
+  <thead>
+  <th>ID</th>
+  <th>Код запчасти</th>
+  <th>Название</th>
+  <th>Тип/артикул</th>
+  <th>Цена</th>
+  <th>Заметка</th>
+  <th colspan="2">Редактирование</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let part of parts" align="center">
+      <td>{{part.id}}</td>
+      <td>{{part.code}}</td>
+      <td>{{part.name}}</td>
+      <td>{{part.type}}</td>
+      <td>{{part.price}}</td>
+      <td>{{part.annotation}}</td>
+      <td><button (click)="delete(part.id)">Удалить</button></td>
+      <td><button (click)="update(part)">Изменить</button></td>
+    </tr>
+  </tbody>
+</table>
