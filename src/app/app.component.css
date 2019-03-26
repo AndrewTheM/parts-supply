@@ -1,0 +1,50 @@
+body {
+  background: #ffdf95;
+}
+
+h1 {
+  font-size: 36pt;
+  color: #171c8b;
+}
+
+a {
+  text-align: center;
+  color: #171c8b;
+  font-size: 14pt;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  background: #fff8dc;
+  border: 3px #171c8b solid;
+  padding: 10px;
+}
+
+a:hover {
+  color: #fff8dc;
+  background: #171c8b;
+}
+
+button {
+  background: transparent;
+  border: 0;
+  font-weight: bold;
+}
+
+button:hover {
+  color: red;
+}
+
+table {
+  table-layout: fixed;
+  word-wrap: break-word;
+  background: #fff8dc;
+}
+
+th {
+  font-size: 12pt;
+}
+
+td {
+  font-size: 12pt;
+  max-width: 500px;
+}
