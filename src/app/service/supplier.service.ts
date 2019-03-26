@@ -20,7 +20,7 @@ export class SupplierService {
   }
 
   update(supplier: Supplier) {
-    return this.http.post(`${this.baseUrl}/update`, supplier);
+    return this.http.post(`${this.baseUrl}/edit`, supplier);
   }
 
   delete(id: string) {

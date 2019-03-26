@@ -20,7 +20,7 @@ export class PartService {
   }
 
   update(part: Part) {
-    return this.http.post(`${this.baseUrl}/update`, part);
+    return this.http.post(`${this.baseUrl}/edit`, part);
   }
 
   delete(id: string) {
