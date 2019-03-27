@@ -11,7 +11,7 @@ import {Supplier} from '../model/supplier';
 export class SupplierComponent implements OnInit {
 
   suppliers: any;
-  supplier: Supplier;
+  supplier: Supplier = new Supplier();
   constructor(private svc: SupplierService) { }
 
   ngOnInit() {
@@ -21,6 +21,7 @@ export class SupplierComponent implements OnInit {
   load() {
     this.svc.getAllSuppliers().subscribe(data => {
       this.suppliers = data;
+      this.supplier = new Supplier();
     });
   }
 

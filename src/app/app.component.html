@@ -1,8 +1,8 @@
 <h1>Фирма по продаже запчастей</h1>
 <nav>
-  <a [routerLink]="['/parts']">Список запчастей</a>
-  <a [routerLink]="['/suppliers']">Список поставщиков</a>
-  <a [routerLink]="['/supplies']">Журнал поставок</a>
+  <a [routerLink]="['/parts']" (click)="select(1)" [ngClass]="selected == 1 ? 'selected' : ''">Список запчастей</a>
+  <a [routerLink]="['/suppliers']" (click)="select(2)" [ngClass]="selected == 2 ? 'selected' : ''">Список поставщиков</a>
+  <a [routerLink]="['/supplies']" (click)="select(3)" [ngClass]="selected == 3 ? 'selected' : ''">Журнал поставок</a>
 </nav>
 <br><br>
 <router-outlet></router-outlet>

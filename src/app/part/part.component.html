@@ -1,3 +1,12 @@
+<form name="form" (ngSubmit)="f.form.valid && create(f)" #f="ngForm" novalidate>
+  <input type="text" [(ngModel)]="part.code" name="code" placeholder="Код запчасти" required />
+  <input type="text" [(ngModel)]="part.name" name="name" placeholder="Название" required />
+  <input type="text" [(ngModel)]="part.type" name="type" placeholder="Тип/артикул" required />
+  <input type="number" [(ngModel)]="part.price" name="price" placeholder="Цена" required />
+  <input type="text" [(ngModel)]="part.annotation" name="annotation" placeholder="Заметка" required />
+  <button class="regular">Добавить</button>
+  <br><br>
+</form>
 <table border="1" cellspacing="0" cellpadding="5">
   <thead>
   <th>ID</th>
@@ -9,15 +18,15 @@
   <th colspan="2">Редактирование</th>
   </thead>
   <tbody>
-    <tr *ngFor="let part of parts" align="center">
-      <td>{{part.id}}</td>
-      <td>{{part.code}}</td>
-      <td>{{part.name}}</td>
-      <td>{{part.type}}</td>
-      <td>{{part.price}}</td>
-      <td>{{part.annotation}}</td>
-      <td><button (click)="delete(part.id)">Удалить</button></td>
-      <td><button (click)="update(part)">Изменить</button></td>
+    <tr *ngFor="let row of parts" align="center">
+      <td>{{row.id}}</td>
+      <td>{{row.code}}</td>
+      <td>{{row.name}}</td>
+      <td>{{row.type}}</td>
+      <td>{{row.price}}</td>
+      <td>{{row.annotation}}</td>
+      <td><button class="tab" (click)="delete(row.id)">Удалить</button></td>
+      <td><button class="tab" (click)="update(row)">Изменить</button></td>
     </tr>
   </tbody>
 </table>

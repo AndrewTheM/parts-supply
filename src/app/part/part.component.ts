@@ -12,7 +12,7 @@ import {Part} from '../model/part';
 export class PartComponent implements OnInit {
 
   parts: any;
-  part: Part;
+  part: Part = new Part();
   constructor(private svc: PartService) { }
 
   ngOnInit() {
@@ -22,6 +22,7 @@ export class PartComponent implements OnInit {
   load() {
     this.svc.getAllParts().subscribe(data => {
       this.parts = data;
+      this.part = new Part();
     });
   }
 

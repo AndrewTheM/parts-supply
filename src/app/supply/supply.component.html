@@ -1,3 +1,15 @@
+<form name="form" (ngSubmit)="f.form.valid && create(f)" #f="ngForm" novalidate>
+  <select [(ngModel)]="supply.supplier" name="supplier" required>
+    <option *ngFor="let supplier of suppliers" [value]="supplier.id">{{supplier.name}}</option>
+  </select>
+  <select [(ngModel)]="supply.part" name="part" required>
+    <option *ngFor="let part of parts" [value]="part.id">{{part.name}}</option>
+  </select>
+  <input type="number" [(ngModel)]="supply.amount" name="amount" placeholder="Количество" required />
+  <input type="date" [(ngModel)]="supply.date" name="date" required />
+  <button class="regular">Добавить</button>
+  <br><br>
+</form>
 <table border="1" cellspacing="0" cellpadding="5">
   <thead>
   <th>ID</th>
@@ -14,8 +26,8 @@
     <td>{{supply.part.name}}</td>
     <td>{{supply.amount}}</td>
     <td>{{supply.date}}</td>
-    <td><button (click)="delete(supply.id)">Удалить</button></td>
-    <td><button (click)="update(supply)">Изменить</button></td>
+    <td><button class="tab" (click)="delete(supply.id)">Удалить</button></td>
+    <td><button class="tab" (click)="update(supply)">Изменить</button></td>
   </tr>
   </tbody>
 </table>

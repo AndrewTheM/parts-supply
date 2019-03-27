@@ -8,4 +8,10 @@ import {Component, ViewEncapsulation} from '@angular/core';
 })
 export class AppComponent {
   title = 'parts-supply';
+
+  selected = 1;
+
+  select(selected: number) {
+    this.selected = selected;
+  }
 }

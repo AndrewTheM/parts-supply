@@ -11,14 +11,6 @@ import {SupplierService} from './service/supplier.service';
 import {SupplyService} from './service/supply.service';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
-import {RouterModule, Routes} from '@angular/router';
-
-const appRoutes: Routes = [
-  {path: '', component: PartComponent},
-  {path: 'parts', component: PartComponent},
-  {path: 'suppliers', component: SupplierComponent},
-  {path: 'supplies', component: SupplyComponent}
-];
 
 @NgModule({
   declarations: [
@@ -31,8 +23,7 @@ const appRoutes: Routes = [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
-    RouterModule.forRoot(appRoutes)
+    FormsModule
   ],
   providers: [
     PartService,
