@@ -12,6 +12,8 @@ export class SupplierComponent implements OnInit {
 
   suppliers: any;
   supplier: Supplier = new Supplier();
+  supplierToUpdate: Supplier;
+
   constructor(private svc: SupplierService) { }
 
   ngOnInit() {
@@ -32,9 +34,17 @@ export class SupplierComponent implements OnInit {
   }
 
   update(supplier: Supplier) {
-    this.svc.update(supplier).subscribe(() => {
-      this.load();
-    });
+    this.supplierToUpdate = supplier;
+  }
+
+  save() {
+    if (this.supplierToUpdate.code !== '' && this.supplierToUpdate.name !== '' &&
+        this.supplierToUpdate.address !== '' && this.supplierToUpdate.phone !== '') {
+      this.svc.update(this.supplierToUpdate).subscribe(() => {
+        this.load();
+        this.supplierToUpdate = null;
+      });
+    }
   }
 
   delete(id: string) {

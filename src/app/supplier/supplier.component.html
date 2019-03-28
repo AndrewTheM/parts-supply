@@ -1,29 +1,54 @@
-<form name="form" (ngSubmit)="f.form.valid && create(f)" #f="ngForm" novalidate>
-  <input type="text" [(ngModel)]="supplier.code" name="code" placeholder="Код поставщика" required />
-  <input type="text" [(ngModel)]="supplier.name" name="name" placeholder="Название" required />
-  <input type="text" [(ngModel)]="supplier.address" name="address" placeholder="Юридический адрес" required />
-  <input type="text" [(ngModel)]="supplier.phone" name="phone" placeholder="Телефон" required />
+<form *ngIf="supplierToUpdate == null" name="form" (ngSubmit)="f.form.valid && create(f)" #f="ngForm" novalidate>
+  <input class="regular" type="text" [(ngModel)]="supplier.code" name="code" placeholder="Код поставщика" required />
+  <input class="regular" type="text" [(ngModel)]="supplier.name" name="name" placeholder="Название" required />
+  <input class="regular" type="text" [(ngModel)]="supplier.address" name="address" placeholder="Юридический адрес" required />
+  <input class="regular" type="text" [(ngModel)]="supplier.phone" name="phone" placeholder="Телефон" required />
   <button class="regular">Добавить</button>
   <br><br>
 </form>
 <table border="1" cellspacing="0" cellpadding="5">
   <thead>
-  <th>ID</th>
-  <th>Код поставщика</th>
-  <th>Название</th>
-  <th>Юридический адрес</th>
-  <th>Телефон</th>
-  <th colspan="2">Редактирование</th>
+    <th>ID</th>
+    <th>Код поставщика</th>
+    <th>Название</th>
+    <th>Юридический адрес</th>
+    <th>Телефон</th>
+    <th *ngIf="supplierToUpdate == null" colspan="2">Редактирование</th>
   </thead>
   <tbody>
-  <tr *ngFor="let row of suppliers" align="center">
-    <td>{{row.id}}</td>
-    <td>{{row.code}}</td>
-    <td>{{row.name}}</td>
-    <td>{{row.address}}</td>
-    <td>{{row.phone}}</td>
-    <td><button class="tab" (click)="delete(row.id)">Удалить</button></td>
-    <td><button class="tab" (click)="update(row)">Изменить</button></td>
-  </tr>
+    <tr *ngFor="let row of suppliers" align="center">
+      <td>{{row.id}}</td>
+      <td>
+        <span *ngIf="supplierToUpdate == null || supplierToUpdate.id != row.id">{{row.code}}</span>
+        <span *ngIf="supplierToUpdate != null && supplierToUpdate.id == row.id">
+            <input class="tab" type="text" [(ngModel)]="supplierToUpdate.code" name="codeUpd" />
+          </span>
+      </td>
+      <td>
+        <span *ngIf="supplierToUpdate == null || supplierToUpdate.id != row.id">{{row.name}}</span>
+        <span *ngIf="supplierToUpdate != null && supplierToUpdate.id == row.id">
+            <input class="tab" type="text" [(ngModel)]="supplierToUpdate.name" name="nameUpd" />
+          </span>
+      </td>
+      <td>
+        <span *ngIf="supplierToUpdate == null || supplierToUpdate.id != row.id">{{row.address}}</span>
+        <span *ngIf="supplierToUpdate != null && supplierToUpdate.id == row.id">
+            <input class="tab" type="text" [(ngModel)]="supplierToUpdate.address" name="addressUpd" />
+          </span>
+      </td>
+      <td>
+        <span *ngIf="supplierToUpdate == null || supplierToUpdate.id != row.id">{{row.phone}}</span>
+        <span *ngIf="supplierToUpdate != null && supplierToUpdate.id == row.id">
+            <input class="tab" type="text" [(ngModel)]="supplierToUpdate.phone" name="phoneUpd" />
+          </span>
+      </td>
+      <td *ngIf="supplierToUpdate == null">
+        <button class="tab" (click)="delete(row.id)">Удалить</button>
+      </td>
+      <td *ngIf="supplierToUpdate == null">
+        <button class="tab" (click)="update(row)">Изменить</button>
+      </td>
+    </tr>
   </tbody>
 </table>
+<button *ngIf="supplierToUpdate != null" class="save" (click)="save()">Сохранить</button>

@@ -1,33 +1,62 @@
-<form name="form" (ngSubmit)="f.form.valid && create(f)" #f="ngForm" novalidate>
-  <select [(ngModel)]="supply.supplier" name="supplier" required>
+<form *ngIf="supplyToUpdate == null" name="form" (ngSubmit)="f.form.valid && create(f)" #f="ngForm" novalidate>
+  <select class="regular" [(ngModel)]="supply.supplier" name="supplier" required>
     <option *ngFor="let supplier of suppliers" [value]="supplier.id">{{supplier.name}}</option>
   </select>
-  <select [(ngModel)]="supply.part" name="part" required>
+  <select class="regular" [(ngModel)]="supply.part" name="part" required>
     <option *ngFor="let part of parts" [value]="part.id">{{part.name}}</option>
   </select>
-  <input type="number" [(ngModel)]="supply.amount" name="amount" placeholder="Количество" required />
-  <input type="date" [(ngModel)]="supply.date" name="date" required />
+  <input class="regular" type="number" [(ngModel)]="supply.amount" name="amount" placeholder="Количество" required />
+  <input class="regular" type="date" [(ngModel)]="supply.date" name="date" required />
   <button class="regular">Добавить</button>
   <br><br>
 </form>
 <table border="1" cellspacing="0" cellpadding="5">
   <thead>
-  <th>ID</th>
-  <th>Поставщик</th>
-  <th>Запчасть</th>
-  <th>Количество</th>
-  <th>Дата</th>
-  <th colspan="2">Редактирование</th>
+    <th>ID</th>
+    <th>Поставщик</th>
+    <th>Запчасть</th>
+    <th>Количество</th>
+    <th>Дата</th>
+    <th *ngIf="supplyToUpdate == null" colspan="2">Редактирование</th>
   </thead>
   <tbody>
-  <tr *ngFor="let supply of supplies" align="center">
-    <td>{{supply.id}}</td>
-    <td>{{supply.supplier.name}}</td>
-    <td>{{supply.part.name}}</td>
-    <td>{{supply.amount}}</td>
-    <td>{{supply.date}}</td>
-    <td><button class="tab" (click)="delete(supply.id)">Удалить</button></td>
-    <td><button class="tab" (click)="update(supply)">Изменить</button></td>
-  </tr>
+    <tr *ngFor="let row of supplies" align="center">
+      <td>{{row.id}}</td>
+      <td>
+        <span *ngIf="supplyToUpdate == null || supplyToUpdate.id != row.id">{{row.supplier.name}}</span>
+        <span *ngIf="supplyToUpdate != null && supplyToUpdate.id == row.id">
+          <select class="tab" [(ngModel)]="supplyToUpdate.supplier" name="supplierUpd">
+            <option *ngFor="let sup of suppliers" [value]="sup.id">{{sup.name}}</option>
+          </select>
+        </span>
+      </td>
+      <td>
+        <span *ngIf="supplyToUpdate == null || supplyToUpdate.id != row.id">{{row.part.name}}</span>
+        <span *ngIf="supplyToUpdate != null && supplyToUpdate.id == row.id">
+          <select class="tab" [(ngModel)]="supplyToUpdate.part" name="partUpd">
+            <option *ngFor="let prt of parts" [value]="prt.id">{{prt.name}}</option>
+          </select>
+        </span>
+      </td>
+      <td>
+        <span *ngIf="supplyToUpdate == null || supplyToUpdate.id != row.id">{{row.amount}}</span>
+        <span *ngIf="supplyToUpdate != null && supplyToUpdate.id == row.id">
+          <input class="tab" type="text" [(ngModel)]="supplyToUpdate.amount" name="amountUpd" />
+        </span>
+      </td>
+      <td>
+        <span *ngIf="supplyToUpdate == null || supplyToUpdate.id != row.id">{{row.date}}</span>
+        <span *ngIf="supplyToUpdate != null && supplyToUpdate.id == row.id">
+          <input class="tab" type="date" [(ngModel)]="supplyToUpdate.date" name="dateUpd" />
+        </span>
+      </td>
+      <td *ngIf="supplyToUpdate == null">
+        <button class="tab" (click)="delete(row.id)">Удалить</button>
+      </td>
+      <td *ngIf="supplyToUpdate == null">
+        <button class="tab" (click)="update(row)">Изменить</button>
+      </td>
+    </tr>
   </tbody>
 </table>
+<button *ngIf="supplyToUpdate != null" class="save" (click)="save()">Сохранить</button>

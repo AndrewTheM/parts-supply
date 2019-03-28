@@ -16,6 +16,8 @@ export class SupplyComponent implements OnInit {
   suppliers: any;
   parts: any;
   supply: Supply = new Supply();
+  supplyToUpdate: Supply;
+
   constructor(private supplySvc: SupplyService,
               private supplierSvc: SupplierService,
               private partSvc: PartService) { }
@@ -52,9 +54,18 @@ export class SupplyComponent implements OnInit {
   }
 
   update(supply: Supply) {
-    this.supplySvc.update(supply).subscribe(() => {
-      this.load();
-    });
+      this.supplyToUpdate = supply;
+      this.supplyToUpdate.supplier = supply.supplier.id;
+      this.supplyToUpdate.part = supply.part.id;
+  }
+
+  save() {
+    if (this.supplyToUpdate.amount > 0 && this.supplyToUpdate.date !== '') {
+      this.supplySvc.update(this.supplyToUpdate).subscribe(() => {
+        this.load();
+        this.supplyToUpdate = null;
+      });
+    }
   }
 
   delete(id: string) {

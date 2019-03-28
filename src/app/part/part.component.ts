@@ -13,6 +13,8 @@ export class PartComponent implements OnInit {
 
   parts: any;
   part: Part = new Part();
+  partToUpdate: Part;
+
   constructor(private svc: PartService) { }
 
   ngOnInit() {
@@ -33,9 +35,18 @@ export class PartComponent implements OnInit {
   }
 
   update(part: Part) {
-    this.svc.update(part).subscribe(() => {
-      this.load();
-    });
+    this.partToUpdate = part;
+  }
+
+  save() {
+    if (this.partToUpdate.code !== '' && this.partToUpdate.name !== '' &&
+        this.partToUpdate.type !== '' && this.partToUpdate.price > 0 &&
+        this.partToUpdate.annotation !== '') {
+      this.svc.update(this.partToUpdate).subscribe(() => {
+        this.load();
+        this.partToUpdate = null;
+      });
+    }
   }
 
   delete(id: string) {

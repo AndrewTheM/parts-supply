@@ -1,32 +1,62 @@
-<form name="form" (ngSubmit)="f.form.valid && create(f)" #f="ngForm" novalidate>
-  <input type="text" [(ngModel)]="part.code" name="code" placeholder="Код запчасти" required />
-  <input type="text" [(ngModel)]="part.name" name="name" placeholder="Название" required />
-  <input type="text" [(ngModel)]="part.type" name="type" placeholder="Тип/артикул" required />
-  <input type="number" [(ngModel)]="part.price" name="price" placeholder="Цена" required />
-  <input type="text" [(ngModel)]="part.annotation" name="annotation" placeholder="Заметка" required />
+<form *ngIf="partToUpdate == null" name="form" (ngSubmit)="f.form.valid && create(f)" #f="ngForm" novalidate>
+  <input class="regular" type="text" [(ngModel)]="part.code" name="code" placeholder="Код запчасти" required />
+  <input class="regular" type="text" [(ngModel)]="part.name" name="name" placeholder="Название" required />
+  <input class="regular" type="text" [(ngModel)]="part.type" name="type" placeholder="Тип/артикул" required />
+  <input class="regular" type="number" [(ngModel)]="part.price" name="price" placeholder="Цена" required />
+  <input class="regular" type="text" [(ngModel)]="part.annotation" name="annotation" placeholder="Заметка" required />
   <button class="regular">Добавить</button>
   <br><br>
 </form>
 <table border="1" cellspacing="0" cellpadding="5">
   <thead>
-  <th>ID</th>
-  <th>Код запчасти</th>
-  <th>Название</th>
-  <th>Тип/артикул</th>
-  <th>Цена</th>
-  <th>Заметка</th>
-  <th colspan="2">Редактирование</th>
+    <th>ID</th>
+    <th>Код запчасти</th>
+    <th>Название</th>
+    <th>Тип/артикул</th>
+    <th>Цена</th>
+    <th>Заметка</th>
+    <th *ngIf="partToUpdate == null" colspan="2">Редактирование</th>
   </thead>
   <tbody>
     <tr *ngFor="let row of parts" align="center">
       <td>{{row.id}}</td>
-      <td>{{row.code}}</td>
-      <td>{{row.name}}</td>
-      <td>{{row.type}}</td>
-      <td>{{row.price}}</td>
-      <td>{{row.annotation}}</td>
-      <td><button class="tab" (click)="delete(row.id)">Удалить</button></td>
-      <td><button class="tab" (click)="update(row)">Изменить</button></td>
+      <td>
+        <span *ngIf="partToUpdate == null || partToUpdate.id != row.id">{{row.code}}</span>
+        <span *ngIf="partToUpdate != null && partToUpdate.id == row.id">
+          <input class="tab" type="text" [(ngModel)]="partToUpdate.code" name="codeUpd" />
+        </span>
+      </td>
+      <td>
+        <span *ngIf="partToUpdate == null || partToUpdate.id != row.id">{{row.name}}</span>
+        <span *ngIf="partToUpdate != null && partToUpdate.id == row.id">
+          <input class="tab" type="text" [(ngModel)]="partToUpdate.name" name="nameUpd" />
+        </span>
+      </td>
+      <td>
+        <span *ngIf="partToUpdate == null || partToUpdate.id != row.id">{{row.type}}</span>
+        <span *ngIf="partToUpdate != null && partToUpdate.id == row.id">
+          <input class="tab" type="text" [(ngModel)]="partToUpdate.type" name="typeUpd" />
+        </span>
+      </td>
+      <td>
+        <span *ngIf="partToUpdate == null || partToUpdate.id != row.id">{{row.price}}</span>
+        <span *ngIf="partToUpdate != null && partToUpdate.id == row.id">
+          <input class="tab" type="number" [(ngModel)]="partToUpdate.price" name="priceUpd" />
+        </span>
+      </td>
+      <td>
+        <span *ngIf="partToUpdate == null || partToUpdate.id != row.id">{{row.annotation}}</span>
+        <span *ngIf="partToUpdate != null && partToUpdate.id == row.id">
+          <input class="tab" type="text" [(ngModel)]="partToUpdate.annotation" name="annotationUpd" />
+        </span>
+      </td>
+      <td *ngIf="partToUpdate == null">
+        <button class="tab" (click)="delete(row.id)">Удалить</button>
+      </td>
+      <td *ngIf="partToUpdate == null">
+        <button class="tab" (click)="update(row)">Изменить</button>
+      </td>
     </tr>
   </tbody>
 </table>
+<button *ngIf="partToUpdate != null" class="save" (click)="save()">Сохранить</button>
