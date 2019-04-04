@@ -13,6 +13,8 @@ export class SupplierComponent implements OnInit {
   suppliers: any;
   supplier: Supplier = new Supplier();
   supplierToUpdate: Supplier;
+  field: string;
+  value: string;
 
   constructor(private svc: SupplierService) { }
 
@@ -50,6 +52,12 @@ export class SupplierComponent implements OnInit {
   delete(id: string) {
     this.svc.delete(id).subscribe(() => {
       this.load();
+    });
+  }
+
+  find() {
+    this.svc.find(this.field, this.value).subscribe(data => {
+      this.suppliers = data;
     });
   }
 }

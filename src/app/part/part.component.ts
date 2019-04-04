@@ -14,6 +14,8 @@ export class PartComponent implements OnInit {
   parts: any;
   part: Part = new Part();
   partToUpdate: Part;
+  field: string;
+  value: string;
 
   constructor(private svc: PartService) { }
 
@@ -52,6 +54,12 @@ export class PartComponent implements OnInit {
   delete(id: string) {
     this.svc.delete(id).subscribe(() => {
       this.load();
+    });
+  }
+
+  find() {
+    this.svc.find(this.field, this.value).subscribe(data => {
+      this.parts = data;
     });
   }
 }

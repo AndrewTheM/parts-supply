@@ -55,6 +55,7 @@ input.tab, select.tab {
 button.regular {
   font-size: 10pt;
   font-weight: bold;
+  margin-right: 20px;
 }
 
 button.tab {

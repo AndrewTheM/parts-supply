@@ -60,3 +60,14 @@
   </tbody>
 </table>
 <button *ngIf="partToUpdate != null" class="save" (click)="save()">Сохранить</button>
+<br>
+<select *ngIf="partToUpdate == null" class="regular" [(ngModel)]="field" name="fieldToFind">
+  <option value="code">Код запчасти</option>
+  <option value="name">Название</option>
+  <option value="type">Тип/артикул</option>
+  <option value="price">Цена</option>
+  <option value="annotation">Заметка</option>
+</select>
+<input *ngIf="partToUpdate == null" class="regular" type="text" [(ngModel)]="value" name="valueToFind" />
+<button *ngIf="partToUpdate == null" class="regular" (click)="find()">Найти</button>
+<button *ngIf="partToUpdate == null" class="regular" (click)="load()">Отмена</button>

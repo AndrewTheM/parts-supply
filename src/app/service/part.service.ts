@@ -26,4 +26,8 @@ export class PartService {
   delete(id: string) {
     return this.http.get(`${this.baseUrl}/delete/${id}`);
   }
+
+  find(field: string, value: string) {
+    return this.http.get(`${this.baseUrl}/find/${field}/${value}`);
+  }
 }

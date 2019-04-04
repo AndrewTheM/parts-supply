@@ -60,3 +60,13 @@
   </tbody>
 </table>
 <button *ngIf="supplyToUpdate != null" class="save" (click)="save()">Сохранить</button>
+<br>
+<select *ngIf="supplyToUpdate == null" class="regular" [(ngModel)]="field" name="fieldToFind">
+  <option value="supplier">Поставщик</option>
+  <option value="part">Запчасть</option>
+  <option value="amount">Количество</option>
+  <option value="date">Дата</option>
+</select>
+<input *ngIf="supplyToUpdate == null" class="regular" type="text" [(ngModel)]="value" name="valueToFind" />
+<button *ngIf="supplyToUpdate == null" class="regular" (click)="find()">Найти</button>
+<button *ngIf="supplyToUpdate == null" class="regular" (click)="load()">Отмена</button>

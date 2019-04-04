@@ -17,6 +17,9 @@ export class SupplyComponent implements OnInit {
   parts: any;
   supply: Supply = new Supply();
   supplyToUpdate: Supply;
+  field: string;
+  value: string;
+  income: number;
 
   constructor(private supplySvc: SupplyService,
               private supplierSvc: SupplierService,
@@ -71,6 +74,24 @@ export class SupplyComponent implements OnInit {
   delete(id: string) {
     this.supplySvc.delete(id).subscribe(() => {
       this.load();
+    });
+  }
+
+  find() {
+    this.supplySvc.find(this.field, this.value).subscribe(data => {
+      this.supplies = data;
+    });
+  }
+
+  getIncome(date: string = '') {
+    this.supplySvc.income(date).subscribe(data => {
+      this.income = data;
+    });
+  }
+
+  getIncomeBetween(firstDate: string, secondDate: string) {
+    this.supplySvc.incomeBetween(firstDate, secondDate).subscribe(data => {
+      this.income = data;
     });
   }
 }
