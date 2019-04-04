@@ -8,6 +8,10 @@ h1 {
   font-size: 36pt;
 }
 
+h2 {
+  color: #131751;
+}
+
 a {
   width: 200px;
   color: black;
