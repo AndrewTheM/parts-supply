@@ -1,17 +1,16 @@
-<h2>Суммарный доход фирмы: {{income}}</h2>
-<h2 *ngIf="incomeOnDate != null && firstDate !== '' && !isBetween">Результат по дате ({{firstDate}}): {{incomeOnDate}}</h2>
-<h2 *ngIf="incomeOnDate != null && firstDate !== '' && secondDate !== '' && isBetween">Результат по промежутку дат (от {{firstDate}} до {{secondDate}}): {{incomeOnDate}}</h2>
+<h2>Суммарный расход фирмы: {{income}}</h2>
 <input *ngIf="supplyToUpdate == null" class="regular" type="date" [(ngModel)]="firstDate" name="firstDateOfIncome" />
 <input *ngIf="supplyToUpdate == null && isBetween" class="regular" type="date" [(ngModel)]="secondDate" name="secondDateOfIncome" />
 <button *ngIf="supplyToUpdate == null" class="regular" (click)="isBetween ? getIncomeBetween(firstDate, secondDate) : getIncome(firstDate)">Рассчитать</button>
-<input *ngIf="supplyToUpdate == null" type="checkbox" name="checkSecondDate" [(ngModel)]="isBetween"/>Рассчет дохода в промежутке дат<br>
+<input *ngIf="supplyToUpdate == null" type="checkbox" name="checkSecondDate" [(ngModel)]="isBetween"/>Рассчет расхода в промежутке дат<br>
+<br>
 <select *ngIf="supplyToUpdate == null" class="regular" [(ngModel)]="field" name="fieldToFind">
   <option value="supplier">Поставщик</option>
   <option value="part">Запчасть</option>
   <option value="amount">Количество</option>
   <option value="date">Дата</option>
 </select>
-<input *ngIf="supplyToUpdate == null" class="regular" type="text" [(ngModel)]="value" name="valueToFind" />
+<input *ngIf="supplyToUpdate == null" class="regular" type="text" [(ngModel)]="value" placeholder="Поиск..." name="valueToFind" />
 <button *ngIf="supplyToUpdate == null" class="regular" (click)="find()">Найти</button>
 <button *ngIf="supplyToUpdate == null" class="regular" (click)="load()">Отмена</button>
 <br>
