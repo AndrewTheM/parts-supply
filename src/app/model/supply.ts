@@ -2,7 +2,7 @@ import {Supplier} from './supplier';
 import {Part} from './part';
 
 export class Supply {
-  id: string;
+  id: any;
   supplier: any;
   part: any;
   amount: number;

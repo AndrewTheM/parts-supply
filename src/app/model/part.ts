@@ -1,5 +1,5 @@
 export class Part {
-  id: string;
+  id: any;
   code: string;
   name: string;
   type: string;

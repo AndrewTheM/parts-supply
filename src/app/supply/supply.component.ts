@@ -75,7 +75,7 @@ export class SupplyComponent implements OnInit {
     }
   }
 
-  delete(id: string) {
+  delete(id: any) {
     this.supplySvc.delete(id).subscribe(() => {
       this.load();
     });

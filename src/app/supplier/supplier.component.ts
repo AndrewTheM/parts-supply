@@ -49,7 +49,7 @@ export class SupplierComponent implements OnInit {
     }
   }
 
-  delete(id: string) {
+  delete(id: any) {
     this.svc.delete(id).subscribe(() => {
       this.load();
     });

@@ -23,7 +23,7 @@ export class SupplierService {
     return this.http.post(`${this.baseUrl}/edit`, supplier);
   }
 
-  delete(id: string) {
+  delete(id: any) {
     return this.http.get(`${this.baseUrl}/delete/${id}`);
   }
 

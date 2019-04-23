@@ -24,7 +24,7 @@ export class SupplyService {
     return this.http.post(`${this.baseUrl}/edit`, supply);
   }
 
-  delete(id: string) {
+  delete(id: any) {
     return this.http.get(`${this.baseUrl}/delete/${id}`);
   }
 
