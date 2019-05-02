@@ -8,7 +8,7 @@ import {Observable} from 'rxjs';
 })
 export class SupplyService {
 
-  baseUrl = 'http://localhost:8080/api/supply';
+  baseUrl = 'https://parts-supply.herokuapp.com/api/supply';
 
   constructor(private http: HttpClient) { }
 

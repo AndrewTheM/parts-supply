@@ -7,7 +7,7 @@ import {Supplier} from '../model/supplier';
 })
 export class SupplierService {
 
-  baseUrl = 'http://localhost:8080/api/supplier';
+  baseUrl = 'https://parts-supply.herokuapp.com/api/supplier';
 
   constructor(private http: HttpClient) { }
 

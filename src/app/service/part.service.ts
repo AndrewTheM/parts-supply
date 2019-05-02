@@ -7,7 +7,7 @@ import {Part} from '../model/part';
 })
 export class PartService {
 
-  baseUrl = 'http://localhost:8080/api/part';
+  baseUrl = 'https://parts-supply.herokuapp.com/api/part';
 
   constructor(private http: HttpClient) { }
 
