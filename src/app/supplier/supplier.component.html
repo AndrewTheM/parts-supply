@@ -1,7 +1,7 @@
 <select *ngIf="supplierToUpdate == null" class="regular" [(ngModel)]="field" name="fieldToFind">
   <option value="code">Код поставщика</option>
   <option value="name">Название</option>
-  <option value="address">Юридический адрес</option>
+  <option value="address">Адрес</option>
   <option value="phone">Телефон</option>
 </select>
 <input *ngIf="supplierToUpdate == null" class="regular" type="text" [(ngModel)]="value" placeholder="Поиск..." name="valueToFind" />
@@ -11,7 +11,7 @@
 <form *ngIf="supplierToUpdate == null" name="form" (ngSubmit)="f.form.valid && create(f)" #f="ngForm" novalidate>
   <input class="regular" type="text" [(ngModel)]="supplier.code" name="code" placeholder="Код поставщика" required />
   <input class="regular" type="text" [(ngModel)]="supplier.name" name="name" placeholder="Название" required />
-  <input class="regular" type="text" [(ngModel)]="supplier.address" name="address" placeholder="Юридический адрес" required />
+  <input class="regular" type="text" [(ngModel)]="supplier.address" name="address" placeholder="Адрес" required />
   <input class="regular" type="text" [(ngModel)]="supplier.phone" name="phone" placeholder="Телефон" required />
   <button class="regular">Добавить</button>
   <br><br>
@@ -21,7 +21,7 @@
     <th>ID</th>
     <th>Код поставщика</th>
     <th>Название</th>
-    <th>Юридический адрес</th>
+    <th>Адрес</th>
     <th>Телефон</th>
     <th *ngIf="supplierToUpdate == null" colspan="2">Редактирование</th>
   </thead>

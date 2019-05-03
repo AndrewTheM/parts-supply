@@ -1,8 +1,9 @@
 <h2>Суммарный расход фирмы: {{income}}</h2>
-<input *ngIf="supplyToUpdate == null" class="regular" type="date" [(ngModel)]="firstDate" name="firstDateOfIncome" />
-<input *ngIf="supplyToUpdate == null && isBetween" class="regular" type="date" [(ngModel)]="secondDate" name="secondDateOfIncome" />
+<input *ngIf="supplyToUpdate == null" class="check" type="checkbox" name="checkSecondDate" [(ngModel)]="isBetween"/>
+<span *ngIf="supplyToUpdate == null" class="check">Рассчет расхода в промежутке дат</span><br><br>
+<input *ngIf="supplyToUpdate == null" class="date" type="date" [(ngModel)]="firstDate" name="firstDateOfIncome" />
+<input *ngIf="supplyToUpdate == null && isBetween" class="date" type="date" [(ngModel)]="secondDate" name="secondDateOfIncome" />
 <button *ngIf="supplyToUpdate == null" class="regular" (click)="isBetween ? getIncomeBetween(firstDate, secondDate) : getIncome(firstDate)">Рассчитать</button>
-<input *ngIf="supplyToUpdate == null" type="checkbox" name="checkSecondDate" [(ngModel)]="isBetween"/>Рассчет расхода в промежутке дат<br>
 <br>
 <select *ngIf="supplyToUpdate == null" class="regular" [(ngModel)]="field" name="fieldToFind">
   <option value="supplier">Поставщик</option>
@@ -22,7 +23,7 @@
     <option *ngFor="let part of parts" [value]="part.id">{{part.name}}</option>
   </select>
   <input class="regular" type="number" [(ngModel)]="supply.amount" name="amount" placeholder="Количество" required />
-  <input class="regular" type="date" [(ngModel)]="supply.date" name="date" required />
+  <input class="date" type="date" [(ngModel)]="supply.date" name="date" required />
   <button class="regular">Добавить</button>
   <br><br>
 </form>
@@ -63,7 +64,7 @@
       <td>
         <span *ngIf="supplyToUpdate == null || supplyToUpdate.id != row.id">{{row.date}}</span>
         <span *ngIf="supplyToUpdate != null && supplyToUpdate.id == row.id">
-          <input class="tab" type="date" [(ngModel)]="supplyToUpdate.date" name="dateUpd" />
+          <input class="tabdate" type="date" [(ngModel)]="supplyToUpdate.date" name="dateUpd" />
         </span>
       </td>
       <td *ngIf="supplyToUpdate == null">
