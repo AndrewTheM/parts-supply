@@ -15,7 +15,7 @@ export class AppComponent {
 
   constructor(private meta: Meta, private router: Router) {
     this.selected = 1;
-    this.meta.addTag({name: 'viewport', content: 'width=device-width'})
+    this.meta.addTag({name: 'viewport', content: 'width=device-width'});
     this.router.navigateByUrl('/parts');
   }
 
