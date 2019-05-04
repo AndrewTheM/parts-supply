@@ -1,38 +1,40 @@
 body {
+  background: fixed url(https://cdn.pixabay.com/photo/2016/04/12/22/35/watercolour-1325656_960_720.jpg);
+  background-size: cover;
   padding: 5px 0 20px 20px;
 }
 
 h1 {
-  color: #131751;
+  color: #16184c;
   font-size: 48pt;
 }
 
 h2 {
-  color: #131751;
+  color: #16184c;
   font-size: 22pt;
   margin: 10px 0;
 }
 
 a {
   width: 250px;
-  color: #131751;
+  color: #16184c;
   padding: 10px;
   font-size: 18pt;
   text-align: center;
   font-weight: bold;
-  background: #fff8dc;
+  background: #cef4d7;
   text-decoration: none;
   display: inline-block;
   outline: 2px #2f3a56 solid;
 }
 
 a:hover, a.selected {
-  color: #fff8dc;
+  color: #cef4d7;
   background: #2f3a56;
 }
 
 table {
-  background: #fff8dc;
+  background: #cef4d7;
   table-layout: fixed;
   word-wrap: break-word;
 }
@@ -90,7 +92,7 @@ input.check {
 
 span.check {
   font-weight: bold;
-  color: #131751;
+  color: #16184c;
   font-size: 14pt;
   position: relative;
   top: -1.5px;
@@ -129,6 +131,6 @@ fieldset {
   border-radius: 10px;
   padding: 10px;
   margin: 20px 0;
-  background: #fff8dc;
-  border: 2px #131751 solid;
+  background: #cef4d7;
+  border: 2px #16184c solid;
 }

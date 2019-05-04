@@ -1,4 +1,3 @@
-<meta name="viewport" content="width=device-width">
 <div *ngIf="supplyToUpdate == null">
   <fieldset>
     <h2>Суммарный расход фирмы: {{income}}</h2>
@@ -29,9 +28,9 @@
       <select class="regular" [(ngModel)]="supply.part" name="part" required>
         <option *ngFor="let part of parts" [value]="part.id">{{part.name}}</option>
       </select>
+      <button class="regular">Добавить</button>
       <input class="regular" type="number" [(ngModel)]="supply.amount" name="amount" placeholder="Количество" required />
       <input class="date" type="date" [(ngModel)]="supply.date" name="date" required />
-      <button class="regular">Добавить</button>
     </form>
   </fieldset>
 </div>
