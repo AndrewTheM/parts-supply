@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import {PartComponent} from './part/part.component';
 import {SupplierComponent} from './supplier/supplier.component';
 import {SupplyComponent} from './supply/supply.component';
-import {AppComponent} from './app.component';
 
 const routes: Routes = [
   {path: 'parts', component: PartComponent},

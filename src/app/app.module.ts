@@ -11,7 +11,6 @@ import {SupplierService} from './service/supplier.service';
 import {SupplyService} from './service/supply.service';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
-
 @NgModule({
   declarations: [
     AppComponent,
