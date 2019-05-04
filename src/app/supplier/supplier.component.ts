@@ -37,6 +37,7 @@ export class SupplierComponent implements OnInit {
 
   update(supplier: Supplier) {
     this.supplierToUpdate = supplier;
+    this.suppliers = [this.supplierToUpdate];
   }
 
   save() {
@@ -45,6 +46,9 @@ export class SupplierComponent implements OnInit {
       this.svc.update(this.supplierToUpdate).subscribe(() => {
         this.load();
         this.supplierToUpdate = null;
+        if (this.value != null) {
+          this.find();
+        }
       });
     }
   }
@@ -52,6 +56,9 @@ export class SupplierComponent implements OnInit {
   delete(id: any) {
     this.svc.delete(id).subscribe(() => {
       this.load();
+      if (this.value != null) {
+        this.find();
+      }
     });
   }
 
@@ -59,5 +66,10 @@ export class SupplierComponent implements OnInit {
     this.svc.find(this.field, this.value).subscribe(data => {
       this.suppliers = data;
     });
+  }
+
+  cancel() {
+    this.load();
+    this.value = null;
   }
 }

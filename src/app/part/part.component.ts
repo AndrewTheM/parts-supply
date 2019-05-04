@@ -38,6 +38,7 @@ export class PartComponent implements OnInit {
 
   update(part: Part) {
     this.partToUpdate = part;
+    this.parts = [this.partToUpdate];
   }
 
   save() {
@@ -47,6 +48,9 @@ export class PartComponent implements OnInit {
       this.svc.update(this.partToUpdate).subscribe(() => {
         this.load();
         this.partToUpdate = null;
+        if (this.value != null) {
+          this.find();
+        }
       });
     }
   }
@@ -54,6 +58,9 @@ export class PartComponent implements OnInit {
   delete(id: any) {
     this.svc.delete(id).subscribe(() => {
       this.load();
+      if (this.value != null) {
+        this.find();
+      }
     });
   }
 
@@ -61,5 +68,10 @@ export class PartComponent implements OnInit {
     this.svc.find(this.field, this.value).subscribe(data => {
       this.parts = data;
     });
+  }
+
+  cancel() {
+    this.load();
+    this.value = null;
   }
 }

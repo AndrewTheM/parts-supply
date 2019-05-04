@@ -1,23 +1,26 @@
-<select *ngIf="partToUpdate == null" class="regular" [(ngModel)]="field" name="fieldToFind">
-  <option value="code">Код запчасти</option>
-  <option value="name">Название</option>
-  <option value="type">Тип/артикул</option>
-  <option value="price">Цена</option>
-  <option value="annotation">Заметка</option>
-</select>
-<input *ngIf="partToUpdate == null" class="regular" type="text" [(ngModel)]="value" placeholder="Поиск..." name="valueToFind" />
-<button *ngIf="partToUpdate == null" class="regular" (click)="find()">Найти</button>
-<button *ngIf="partToUpdate == null" class="regular" (click)="load()">Отмена</button>
-<br>
-<form *ngIf="partToUpdate == null" name="form" (ngSubmit)="f.form.valid && create(f)" #f="ngForm" novalidate>
-  <input class="regular" type="text" [(ngModel)]="part.code" name="code" placeholder="Код запчасти" required />
-  <input class="regular" type="text" [(ngModel)]="part.name" name="name" placeholder="Название" required />
-  <input class="regular" type="text" [(ngModel)]="part.type" name="type" placeholder="Тип/артикул" required />
-  <input class="regular" type="number" [(ngModel)]="part.price" name="price" placeholder="Цена" required />
-  <input class="regular" type="text" [(ngModel)]="part.annotation" name="annotation" placeholder="Заметка" required />
-  <button class="regular">Добавить</button>
-  <br><br>
-</form>
+<div *ngIf="partToUpdate == null">
+  <form name="searchForm" (ngSubmit)="sf.form.valid && find()" #sf="ngForm" novalidate>
+    <select class="regular" [(ngModel)]="field" name="fieldToFind" required>
+      <option value="code">Код запчасти</option>
+      <option value="name">Название</option>
+      <option value="type">Тип/артикул</option>
+      <option value="price">Цена</option>
+      <option value="annotation">Заметка</option>
+    </select>
+    <input class="regular" type="text" [(ngModel)]="value" placeholder="Поиск..." name="valueToFind" required/>
+    <button class="regular" type="submit">Найти</button>
+    <button class="regular" (click)="cancel()">Отмена</button>
+  </form>
+  <form name="form" (ngSubmit)="f.form.valid && create(f)" #f="ngForm" novalidate>
+    <input class="regular" type="text" [(ngModel)]="part.code" name="code" placeholder="Код запчасти" required />
+    <input class="regular" type="text" [(ngModel)]="part.name" name="name" placeholder="Название" required />
+    <input class="regular" type="text" [(ngModel)]="part.type" name="type" placeholder="Тип/артикул" required />
+    <input class="regular" type="number" [(ngModel)]="part.price" name="price" placeholder="Цена" required />
+    <input class="regular" type="text" [(ngModel)]="part.annotation" name="annotation" placeholder="Заметка" required />
+    <button class="regular">Добавить</button>
+    <br><br>
+  </form>
+</div>
 <table border="1" cellspacing="0" cellpadding="5">
   <thead>
     <th>ID</th>

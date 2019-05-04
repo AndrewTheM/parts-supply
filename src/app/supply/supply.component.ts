@@ -64,6 +64,7 @@ export class SupplyComponent implements OnInit {
       this.supplyToUpdate = supply;
       this.supplyToUpdate.supplier = supply.supplier.id;
       this.supplyToUpdate.part = supply.part.id;
+      this.supplies = [this.supplyToUpdate];
   }
 
   save() {
@@ -71,6 +72,9 @@ export class SupplyComponent implements OnInit {
       this.supplySvc.update(this.supplyToUpdate).subscribe(() => {
         this.load();
         this.supplyToUpdate = null;
+        if (this.value != null) {
+          this.find();
+        }
       });
     }
   }
@@ -78,6 +82,9 @@ export class SupplyComponent implements OnInit {
   delete(id: any) {
     this.supplySvc.delete(id).subscribe(() => {
       this.load();
+      if (this.value != null) {
+        this.find();
+      }
     });
   }
 
@@ -101,5 +108,10 @@ export class SupplyComponent implements OnInit {
     this.supplySvc.incomeBetween(this.firstDate, this.secondDate).subscribe(data => {
       window.alert(`Результат по промежутку дат (от ${this.firstDate} до ${this.secondDate}): ${data}`);
     });
+  }
+
+  cancel() {
+    this.load();
+    this.value = null;
   }
 }

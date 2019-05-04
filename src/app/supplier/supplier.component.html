@@ -1,21 +1,24 @@
-<select *ngIf="supplierToUpdate == null" class="regular" [(ngModel)]="field" name="fieldToFind">
-  <option value="code">Код поставщика</option>
-  <option value="name">Название</option>
-  <option value="address">Адрес</option>
-  <option value="phone">Телефон</option>
-</select>
-<input *ngIf="supplierToUpdate == null" class="regular" type="text" [(ngModel)]="value" placeholder="Поиск..." name="valueToFind" />
-<button *ngIf="supplierToUpdate == null" class="regular" (click)="find()">Найти</button>
-<button *ngIf="supplierToUpdate == null" class="regular" (click)="load()">Отмена</button>
-<br>
-<form *ngIf="supplierToUpdate == null" name="form" (ngSubmit)="f.form.valid && create(f)" #f="ngForm" novalidate>
-  <input class="regular" type="text" [(ngModel)]="supplier.code" name="code" placeholder="Код поставщика" required />
-  <input class="regular" type="text" [(ngModel)]="supplier.name" name="name" placeholder="Название" required />
-  <input class="regular" type="text" [(ngModel)]="supplier.address" name="address" placeholder="Адрес" required />
-  <input class="regular" type="text" [(ngModel)]="supplier.phone" name="phone" placeholder="Телефон" required />
-  <button class="regular">Добавить</button>
-  <br><br>
-</form>
+<div *ngIf="supplierToUpdate == null">
+  <form name="searchForm" (ngSubmit)="sf.form.valid && find()" #sf="ngForm" novalidate>
+    <select class="regular" [(ngModel)]="field" name="fieldToFind" required>
+      <option value="code">Код поставщика</option>
+      <option value="name">Название</option>
+      <option value="address">Адрес</option>
+      <option value="phone">Телефон</option>
+    </select>
+    <input class="regular" type="text" [(ngModel)]="value" placeholder="Поиск..." name="valueToFind" required/>
+    <button class="regular" type="submit">Найти</button>
+    <button class="regular" (click)="cancel()">Отмена</button>
+  </form>
+  <form name="form" (ngSubmit)="f.form.valid && create(f)" #f="ngForm" novalidate>
+    <input class="regular" type="text" [(ngModel)]="supplier.code" name="code" placeholder="Код поставщика" required />
+    <input class="regular" type="text" [(ngModel)]="supplier.name" name="name" placeholder="Название" required />
+    <input class="regular" type="text" [(ngModel)]="supplier.address" name="address" placeholder="Адрес" required />
+    <input class="regular" type="text" [(ngModel)]="supplier.phone" name="phone" placeholder="Телефон" required />
+    <button class="regular">Добавить</button>
+    <br><br>
+  </form>
+</div>
 <table border="1" cellspacing="0" cellpadding="5">
   <thead>
     <th>ID</th>
