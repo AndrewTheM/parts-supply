@@ -1,5 +1,6 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {Router} from '@angular/router';
+import {Meta} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +13,9 @@ export class AppComponent {
 
   selected: number;
 
-  constructor(private router: Router) {
+  constructor(private meta: Meta, private router: Router) {
     this.selected = 1;
+    this.meta.addTag({name: 'viewport', content: 'width=device-width'})
     this.router.navigateByUrl('/parts');
   }
 
