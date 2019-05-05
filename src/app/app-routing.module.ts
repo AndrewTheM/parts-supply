@@ -7,7 +7,8 @@ import {SupplyComponent} from './supply/supply.component';
 const routes: Routes = [
   {path: 'parts', component: PartComponent},
   {path: 'suppliers', component: SupplierComponent},
-  {path: 'supplies', component: SupplyComponent}
+  {path: 'supplies', component: SupplyComponent},
+  {path: '**', redirectTo: 'parts'}
 ];
 
 @NgModule({

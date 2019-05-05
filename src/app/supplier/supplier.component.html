@@ -1,35 +1,35 @@
 <div *ngIf="supplierToUpdate == null">
   <fieldset>
     <form name="searchForm" (ngSubmit)="sf.form.valid && find()" #sf="ngForm" novalidate>
-      <input class="regular" type="text" [(ngModel)]="value" placeholder="Поиск..." name="valueToFind" required/>
-      <button class="regular" type="submit">Найти</button>
-      <button class="regular" (click)="cancel()">Отмена</button>
+      <input class="regular" type="text" [(ngModel)]="value" placeholder="Search..." name="valueToFind" required/>
+      <button class="regular" type="submit">Find</button>
+      <button class="regular" (click)="cancel()">Cancel</button>
       <select class="regular" [(ngModel)]="field" name="fieldToFind" required>
-        <option value="code">Код поставщика</option>
-        <option value="name">Название</option>
-        <option value="address">Адрес</option>
-        <option value="phone">Телефон</option>
+        <option value="code">Supplier's Code</option>
+        <option value="name">Name</option>
+        <option value="address">Address</option>
+        <option value="phone">Phone</option>
       </select>
     </form>
   </fieldset>
   <fieldset>
     <form name="form" (ngSubmit)="f.form.valid && create(f)" #f="ngForm" novalidate>
-      <input class="regular" type="text" [(ngModel)]="supplier.code" name="code" placeholder="Код поставщика" required />
-      <input class="regular" type="text" [(ngModel)]="supplier.name" name="name" placeholder="Название" required />
-      <button class="regular">Добавить</button>
-      <input class="regular" type="text" [(ngModel)]="supplier.address" name="address" placeholder="Адрес" required />
-      <input class="regular" type="text" [(ngModel)]="supplier.phone" name="phone" placeholder="Телефон" required />
+      <input class="regular" type="text" [(ngModel)]="supplier.code" name="code" placeholder="Supplier's Code" required />
+      <input class="regular" type="text" [(ngModel)]="supplier.name" name="name" placeholder="Name" required />
+      <button class="regular">Create</button>
+      <input class="regular" type="text" [(ngModel)]="supplier.address" name="address" placeholder="Address" required />
+      <input class="regular" type="text" [(ngModel)]="supplier.phone" name="phone" placeholder="Phone" required />
     </form>
   </fieldset>
 </div>
 <table border="1" cellspacing="0" cellpadding="5">
   <thead>
     <th>ID</th>
-    <th>Код поставщика</th>
-    <th>Название</th>
-    <th>Адрес</th>
-    <th>Телефон</th>
-    <th *ngIf="supplierToUpdate == null" colspan="2">Редактирование</th>
+    <th>Supplier's Code</th>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Phone</th>
+    <th *ngIf="supplierToUpdate == null" colspan="2">Modification</th>
   </thead>
   <tbody>
     <tr *ngFor="let row of suppliers" align="center">
@@ -59,12 +59,12 @@
           </span>
       </td>
       <td *ngIf="supplierToUpdate == null">
-        <button class="tab" (click)="delete(row.id)">Удалить</button>
+        <button class="tab" (click)="delete(row.id)">Delete</button>
       </td>
       <td *ngIf="supplierToUpdate == null">
-        <button class="tab" (click)="update(row)">Изменить</button>
+        <button class="tab" (click)="update(row)">Edit</button>
       </td>
     </tr>
   </tbody>
 </table>
-<button *ngIf="supplierToUpdate != null" class="save" (click)="save()">Сохранить</button>
+<button *ngIf="supplierToUpdate != null" class="save" (click)="save()">Save</button>

@@ -99,14 +99,14 @@ export class SupplyComponent implements OnInit {
       if (date === '') {
         this.income = data;
       } else {
-        window.alert(`Результат по дате (${this.firstDate}): ${data}`);
+        window.alert(`Result on date (${this.firstDate}): ${data}`);
       }
     });
   }
 
   getIncomeBetween() {
     this.supplySvc.incomeBetween(this.firstDate, this.secondDate).subscribe(data => {
-      window.alert(`Результат по промежутку дат (от ${this.firstDate} до ${this.secondDate}): ${data}`);
+      window.alert(`Result between dates (from ${this.firstDate} to ${this.secondDate}): ${data}`);
     });
   }
 

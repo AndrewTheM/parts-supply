@@ -1,22 +1,22 @@
 <div *ngIf="supplyToUpdate == null">
   <fieldset>
-    <h2>Суммарный расход фирмы: {{income}}</h2>
+    <h2>Total Firm Expense: {{income}}</h2>
     <input class="date" type="date" [(ngModel)]="firstDate" name="firstDateOfIncome" />
     <input *ngIf="isBetween" class="date" type="date" [(ngModel)]="secondDate" name="secondDateOfIncome" />
-    <button class="regular" (click)="isBetween ? getIncomeBetween(firstDate, secondDate) : getIncome(firstDate)">Рассчитать</button><br>
+    <button class="regular" (click)="isBetween ? getIncomeBetween(firstDate, secondDate) : getIncome(firstDate)">Calculate</button><br>
     <input class="check" type="checkbox" name="checkSecondDate" [(ngModel)]="isBetween"/>
-    <span class="check">Рассчет расхода в промежутке дат</span><br>
+    <span class="check">Calculate Between Dates</span><br>
   </fieldset>
   <fieldset>
     <form name="searchForm" (ngSubmit)="sf.form.valid && find()" #sf="ngForm" novalidate>
-      <input class="regular" type="text" [(ngModel)]="value" placeholder="Поиск..." name="valueToFind" required/>
-      <button class="regular" type="submit">Найти</button>
-      <button class="regular" (click)="cancel()">Отмена</button>
+      <input class="regular" type="text" [(ngModel)]="value" placeholder="Search..." name="valueToFind" required/>
+      <button class="regular" type="submit">Find</button>
+      <button class="regular" (click)="cancel()">Cancel</button>
       <select class="regular" [(ngModel)]="field" name="fieldToFind" required>
-        <option value="supplier">Поставщик</option>
-        <option value="part">Запчасть</option>
-        <option value="amount">Количество</option>
-        <option value="date">Дата</option>
+        <option value="supplier">Supplier</option>
+        <option value="part">Part</option>
+        <option value="amount">Amount</option>
+        <option value="date">Date</option>
       </select>
     </form>
   </fieldset>
@@ -28,8 +28,8 @@
       <select class="regular" [(ngModel)]="supply.part" name="part" required>
         <option *ngFor="let part of parts" [value]="part.id">{{part.name}}</option>
       </select>
-      <button class="regular">Добавить</button>
-      <input class="regular" type="number" [(ngModel)]="supply.amount" name="amount" placeholder="Количество" required />
+      <button class="regular">Create</button>
+      <input class="regular" type="number" [(ngModel)]="supply.amount" name="amount" placeholder="Amount" required />
       <input class="date" type="date" [(ngModel)]="supply.date" name="date" required />
     </form>
   </fieldset>
@@ -37,11 +37,11 @@
 <table border="1" cellspacing="0" cellpadding="5">
   <thead>
     <th>ID</th>
-    <th>Поставщик</th>
-    <th>Запчасть</th>
-    <th>Количество</th>
-    <th>Дата</th>
-    <th *ngIf="supplyToUpdate == null" colspan="2">Редактирование</th>
+    <th>Supplier</th>
+    <th>Part</th>
+    <th>Amount</th>
+    <th>Date</th>
+    <th *ngIf="supplyToUpdate == null" colspan="2">Modification</th>
   </thead>
   <tbody>
     <tr *ngFor="let row of supplies" align="center">
@@ -75,12 +75,12 @@
         </span>
       </td>
       <td *ngIf="supplyToUpdate == null">
-        <button class="tab" (click)="delete(row.id)">Удалить</button>
+        <button class="tab" (click)="delete(row.id)">Delete</button>
       </td>
       <td *ngIf="supplyToUpdate == null">
-        <button class="tab" (click)="update(row)">Изменить</button>
+        <button class="tab" (click)="update(row)">Edit</button>
       </td>
     </tr>
   </tbody>
 </table>
-<button *ngIf="supplyToUpdate != null" class="save" (click)="save()">Сохранить</button>
+<button *ngIf="supplyToUpdate != null" class="save" (click)="save()">Save</button>
