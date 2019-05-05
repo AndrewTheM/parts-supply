@@ -19,7 +19,7 @@ export class SupplyComponent implements OnInit {
   supplyToUpdate: Supply;
   field: string;
   value: string;
-  income: number;
+  expense: number;
   firstDate: string;
   secondDate: string;
   isBetween = false;
@@ -38,7 +38,7 @@ export class SupplyComponent implements OnInit {
     this.supplySvc.getAllSupplies().subscribe(data => {
       this.supplies = data;
       this.supply = new Supply();
-      this.getIncome();
+      this.getExpense();
     });
   }
 
@@ -94,18 +94,18 @@ export class SupplyComponent implements OnInit {
     });
   }
 
-  getIncome(date: string = '') {
-    this.supplySvc.income(date).subscribe(data => {
+  getExpense(date: string = '') {
+    this.supplySvc.expense(date).subscribe(data => {
       if (date === '') {
-        this.income = data;
+        this.expense = data;
       } else {
         window.alert(`Result on date (${this.firstDate}): ${data}`);
       }
     });
   }
 
-  getIncomeBetween() {
-    this.supplySvc.incomeBetween(this.firstDate, this.secondDate).subscribe(data => {
+  getExpenseBetween() {
+    this.supplySvc.expenseBetween(this.firstDate, this.secondDate).subscribe(data => {
       window.alert(`Result between dates (from ${this.firstDate} to ${this.secondDate}): ${data}`);
     });
   }

@@ -1,9 +1,9 @@
 <div *ngIf="supplyToUpdate == null">
   <fieldset>
-    <h2>Total Firm Expense: {{income}}</h2>
-    <input class="date" type="date" [(ngModel)]="firstDate" name="firstDateOfIncome" />
-    <input *ngIf="isBetween" class="date" type="date" [(ngModel)]="secondDate" name="secondDateOfIncome" />
-    <button class="regular" (click)="isBetween ? getIncomeBetween(firstDate, secondDate) : getIncome(firstDate)">Calculate</button><br>
+    <h2>Total Firm Expense: {{expense}}</h2>
+    <input class="date" type="date" [(ngModel)]="firstDate" name="firstDateOfExpense" />
+    <input *ngIf="isBetween" class="date" type="date" [(ngModel)]="secondDate" name="secondDateOfExpense" />
+    <button class="regular" (click)="isBetween ? getExpenseBetween(firstDate, secondDate) : getExpense(firstDate)">Calculate</button><br>
     <input class="check" type="checkbox" name="checkSecondDate" [(ngModel)]="isBetween"/>
     <span class="check">Calculate Between Dates</span><br>
   </fieldset>

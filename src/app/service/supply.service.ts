@@ -32,11 +32,11 @@ export class SupplyService {
     return this.http.get(`${this.baseUrl}/find/${field}/${value}`);
   }
 
-  income(date: string = '') {
-    return this.http.get(`${this.baseUrl}/income/${date}`) as Observable<number>;
+  expense(date: string = '') {
+    return this.http.get(`${this.baseUrl}/expense/${date}`) as Observable<number>;
   }
 
-  incomeBetween(firstDate: string, secondDate: string) {
-    return this.http.get(`${this.baseUrl}/income/from/${firstDate}/to/${secondDate}`) as Observable<number>;
+  expenseBetween(firstDate: string, secondDate: string) {
+    return this.http.get(`${this.baseUrl}/expense/from/${firstDate}/to/${secondDate}`) as Observable<number>;
   }
 }
