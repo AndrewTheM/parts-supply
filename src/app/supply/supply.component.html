@@ -10,14 +10,14 @@
   <fieldset>
     <form name="searchForm" (ngSubmit)="sf.form.valid && find()" #sf="ngForm" novalidate>
       <input class="regular" type="text" [(ngModel)]="value" placeholder="Search..." name="valueToFind" required/>
-      <button class="regular" type="submit">Find</button>
-      <button class="regular" (click)="cancel()">Cancel</button>
       <select class="regular" [(ngModel)]="field" name="fieldToFind" required>
         <option value="supplier">Supplier</option>
         <option value="part">Part</option>
         <option value="amount">Amount</option>
         <option value="date">Date</option>
       </select>
+      <button class="regular" type="submit">Find</button>
+      <button class="regular" (click)="cancel()">Cancel</button>
     </form>
   </fieldset>
   <fieldset>
@@ -28,9 +28,9 @@
       <select class="regular" [(ngModel)]="supply.part" name="part" required>
         <option *ngFor="let part of parts" [value]="part.id">{{part.name}}</option>
       </select>
-      <button class="regular">Create</button>
       <input class="regular" type="number" [(ngModel)]="supply.amount" name="amount" placeholder="Amount" required />
       <input class="date" type="date" [(ngModel)]="supply.date" name="date" required />
+      <button class="regular">Create</button>
     </form>
   </fieldset>
 </div>

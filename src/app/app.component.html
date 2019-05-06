@@ -1,4 +1,4 @@
-<div>
+<div id="wrapper">
     <h1>Spare Parts Company</h1>
     <nav>
       <a [routerLink]="['/parts']" (click)="select(1)" [ngClass]="selected == 1 ? 'selected' : ''">List of Parts</a>
@@ -6,5 +6,5 @@
       <a [routerLink]="['/supplies']" (click)="select(3)" [ngClass]="selected == 3 ? 'selected' : ''">Supply History</a>
     </nav>
     <br><br>
+    <router-outlet></router-outlet>
 </div>
-<router-outlet></router-outlet>

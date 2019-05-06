@@ -2,8 +2,6 @@
   <fieldset>
     <form name="searchForm" (ngSubmit)="sf.form.valid && find()" #sf="ngForm" novalidate>
       <input class="regular" type="text" [(ngModel)]="value" placeholder="Search..." name="valueToFind" required/>
-      <button class="regular" type="submit">Find</button>
-      <button class="regular" (click)="cancel()">Cancel</button>
       <select class="regular" [(ngModel)]="field" name="fieldToFind" required>
         <option value="code">Part's Code</option>
         <option value="name">Name</option>
@@ -11,16 +9,18 @@
         <option value="price">Price</option>
         <option value="annotation">Annotation</option>
       </select>
+      <button class="regular" type="submit">Find</button>
+      <button class="regular" (click)="cancel()">Cancel</button>
     </form>
   </fieldset>
   <fieldset>
     <form name="form" (ngSubmit)="f.form.valid && create(f)" #f="ngForm" novalidate>
       <input class="regular" type="text" [(ngModel)]="part.code" name="code" placeholder="Part's Code" required />
       <input class="regular" type="text" [(ngModel)]="part.name" name="name" placeholder="Name" required />
-      <button class="regular">Create</button>
       <input class="regular" type="text" [(ngModel)]="part.type" name="type" placeholder="Type" required />
       <input class="regular" type="number" [(ngModel)]="part.price" name="price" placeholder="Price" required />
       <input class="regular" type="text" [(ngModel)]="part.annotation" name="annotation" placeholder="Annotation" required />
+      <button class="regular">Create</button>
     </form>
   </fieldset>
 </div>
