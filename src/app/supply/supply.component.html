@@ -1,5 +1,5 @@
 <div *ngIf="supplyToUpdate == null">
-  <fieldset>
+  <fieldset class="expense">
     <h2>Total Firm Expense: {{expense}}</h2>
     <input class="date" type="date" [(ngModel)]="firstDate" name="firstDateOfExpense" />
     <input *ngIf="isBetween" class="date" type="date" [(ngModel)]="secondDate" name="secondDateOfExpense" />
