@@ -1,5 +1,5 @@
 body {
-  background: fixed url(https://cdn.pixabay.com/photo/2016/04/12/22/35/watercolour-1325656_960_720.jpg);
+  background: fixed url(background.jpg);
   background-size: cover;
   padding: 5px 0 20px 20px;
 }
